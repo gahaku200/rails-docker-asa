@@ -17,7 +17,7 @@ jobs:
       - image: circleci/ruby:2.7
       - image: circleci/mysql:5.5
         environment:
-          MySQL_ROOT_PASSWORD: password
+          MySQL_ROOT_PASSWORD: ""
           MySQL_DATABASE: app_test
           MySQL_USER: root
     environment:
