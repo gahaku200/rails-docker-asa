@@ -17,7 +17,7 @@ jobs:
       - image: circleci/ruby:2.7
       - image: circleci/mysql:5.5
         environment:
-          MySQL_ROOT_PASSWORD: ""
+          MySQL_ROOT_PASSWORD: password
           MySQL_DATABASE: app_test
           MySQL_USER: root
     environment:
@@ -30,6 +30,10 @@ jobs:
       - checkout:
           path: ~/rails-docker-asa
       - ruby/install-deps
+      - run:
+          name: Database setup
+          command: |
+            bundle exec rake db:migrate
       - run:
           name: test
           command: bundle exec rake test
